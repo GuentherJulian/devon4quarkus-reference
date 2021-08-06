@@ -18,6 +18,8 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
 
+import org.eclipse.microprofile.config.ConfigProvider;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.faulttolerance.Retry;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
@@ -60,6 +62,12 @@ public class AnimalRestController {
   @Context
   UriInfo uriInfo;
 
+  @ConfigProperty(name = "quarkus.datasource.username")
+  String privateKey;
+
+  // @Inject
+  // VaultKVSecretEngine kvSecretEngine;
+
   @APIResponses({
   @APIResponse(responseCode = "200", description = "OK", content = @Content(schema = @Schema(implementation = PagedAnimalResponse.class))),
   @APIResponse(responseCode = "500") })
@@ -93,6 +101,14 @@ public class AnimalRestController {
     List<Animal> animals = this.animalRepository.findAllQueryDsl(dto).getContent();
     List<AnimalDto> animalsDto = this.mapper.map(animals);
     return new PageImpl<>(animalsDto, PageRequest.of(dto.getPageNumber(), dto.getPageSize()), animalsDto.size());
+  }
+
+  @GET
+  @Path("hello")
+  public String hello() {
+
+    // String s = this.kvSecretEngine.readSecret("myapps/vault-quickstart/config").get("a-private-key").toString();
+    return ConfigProvider.getConfig().getConfigValue("quarkus.datasource.password").getRawValue();
   }
 
   @GET

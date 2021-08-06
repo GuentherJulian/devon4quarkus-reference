@@ -91,7 +91,7 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-smallrye-fault-tolerance</artifactId>
     </dependency>
-    
+
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-jpamodelgen</artifactId>
@@ -100,7 +100,7 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-spring-data-jpa</artifactId>
     </dependency>
-	
+
     <dependency>
       <groupId>com.querydsl</groupId>
       <artifactId>querydsl-jpa</artifactId>
@@ -112,6 +112,11 @@
       <scope>provided</scope>
       <version>4.3.1</version>
     </dependency>
+
+<!--     <dependency> -->
+<!--       <groupId>io.quarkus</groupId> -->
+<!--       <artifactId>quarkus-vault</artifactId> -->
+<!--     </dependency> -->
     <!-- Json logging / Enable this if you do not use tkit-json-log -->
 <!--    <dependency>-->
 <!--      <groupId>io.quarkus</groupId>-->
@@ -192,6 +197,8 @@
       <artifactId>rest-assured</artifactId>
       <scope>test</scope>
     </dependency>
+
+
   </dependencies>
   <build>
     <plugins>
@@ -232,8 +239,8 @@
           </systemPropertyVariables>
         </configuration>
       </plugin>
-      
-    
+
+
 	  <plugin>
         <groupId>com.mysema.maven</groupId>
         <artifactId>apt-maven-plugin</artifactId>
