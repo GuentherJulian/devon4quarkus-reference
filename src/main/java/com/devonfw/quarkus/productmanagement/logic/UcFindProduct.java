@@ -8,11 +8,7 @@ import com.devonfw.quarkus.productmanagement.service.v1.model.ProductSearchCrite
 public interface UcFindProduct {
   Page<ProductDto> findProducts(ProductSearchCriteriaDto dto);
 
-  Page<ProductDto> findProductsByCriteriaApi(ProductSearchCriteriaDto dto);
-
   Page<ProductDto> findProductsByQueryDsl(ProductSearchCriteriaDto dto);
-
-  Page<ProductDto> findProductsByTitleQuery(ProductSearchCriteriaDto dto);
 
   Page<ProductDto> findProductsByTitleNativeQuery(ProductSearchCriteriaDto dto);
 

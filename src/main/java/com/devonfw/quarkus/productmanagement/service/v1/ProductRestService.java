@@ -61,24 +61,10 @@ public class ProductRestService {
   }
 
   @GET
-  @Path("criteriaApi")
-  public PageImpl<ProductDto> getAllCriteriaApi(@BeanParam ProductSearchCriteriaDto dto) {
-
-    return (PageImpl) this.ucFindProduct.findProductsByCriteriaApi(dto);
-  }
-
-  @GET
   @Path("queryDsl")
   public PageImpl<ProductDto> getAllQueryDsl(@BeanParam ProductSearchCriteriaDto dto) {
 
     return (PageImpl) this.ucFindProduct.findProductsByQueryDsl(dto);
-  }
-
-  @GET
-  @Path("query")
-  public PageImpl<ProductDto> getAllQuery(@BeanParam ProductSearchCriteriaDto dto) {
-
-    return (PageImpl) this.ucFindProduct.findProductsByTitleQuery(dto);
   }
 
   @GET

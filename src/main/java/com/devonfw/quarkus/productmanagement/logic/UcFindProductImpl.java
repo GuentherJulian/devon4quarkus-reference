@@ -40,25 +40,9 @@ public class UcFindProductImpl implements UcFindProduct {
   }
 
   @Override
-  public Page<ProductDto> findProductsByCriteriaApi(ProductSearchCriteriaDto dto) {
-
-    List<ProductEntity> products = this.ProductRepository.findAllCriteriaApi(dto).getContent();
-    List<ProductDto> productsDto = this.mapper.map(products);
-    return new PageImpl<>(productsDto, PageRequest.of(dto.getPageNumber(), dto.getPageSize()), productsDto.size());
-  }
-
-  @Override
   public Page<ProductDto> findProductsByQueryDsl(ProductSearchCriteriaDto dto) {
 
     List<ProductEntity> products = this.ProductRepository.findAllQueryDsl(dto).getContent();
-    List<ProductDto> productsDto = this.mapper.map(products);
-    return new PageImpl<>(productsDto, PageRequest.of(dto.getPageNumber(), dto.getPageSize()), productsDto.size());
-  }
-
-  @Override
-  public Page<ProductDto> findProductsByTitleQuery(ProductSearchCriteriaDto dto) {
-
-    List<ProductEntity> products = this.ProductRepository.findByTitleQuery(dto).getContent();
     List<ProductDto> productsDto = this.mapper.map(products);
     return new PageImpl<>(productsDto, PageRequest.of(dto.getPageNumber(), dto.getPageSize()), productsDto.size());
   }
